@@ -1,0 +1,4 @@
+const menu=document.querySelector('.menu'),nav=document.querySelector('#nav');menu?.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')!=='true';menu.setAttribute('aria-expanded',String(open));nav.classList.toggle('open',open)});const form=document.querySelector('[data-preview]');if(form){const value=new URLSearchParams(location.search).get('material');if(value&&[...form.material.options].some(o=>o.value===value))form.material.value=value;form.addEventListener('submit',e=>{e.preventDefault();const d=new FormData(form);const out=form.querySelector('.summary');out.hidden=false;out.querySelector('pre').textContent=`Material: ${d.get('material')}
+Dimensões: ${d.get('dimensoes')}
+Quantidade: ${d.get('quantidade')}
+Observações: ${d.get('observacoes')||'Sem observações'}`;out.scrollIntoView({block:'nearest',behavior:'smooth'})})}
